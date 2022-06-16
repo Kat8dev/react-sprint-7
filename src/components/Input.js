@@ -8,7 +8,7 @@ export default function Input(props) {
                 onChange={props.handleChange}
                 name={props.name}
             />
-            <label htmlFor={props.htmlfor}>{props.labelText} ({props.price} €)</label>
+            <label htmlFor={props.htmlfor}>{props.labelText} {props.price} €</label>
         </div>
     )
 }

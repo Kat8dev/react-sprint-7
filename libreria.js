@@ -25,13 +25,13 @@ export default function Inputs() {
                 name="firstName"
                 onChange={handleChange}
                 value={formData.firstName}
-            /> Una pàgina web (500 €)
+            /> 
              <input
                 type="text"
                 name="lastName"
                 onChange={handleChange}
                 value={formData.lastName}
-            /> Una pàgina web (500 €)
+            /> 
             <input 
                 type="email"
                 name="email"

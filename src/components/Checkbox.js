@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { checkboxData } from "./checkboxData";
 import Input from "./Input"
+import  Pannel  from "./Pannel";
 
 export default function Checkbox() {
-    const [formData, setFormData] = useState([
+    const [formData, setFormData] = useState(
         new Array(checkboxData.length).fill(false)
-    ]);
+    );
 
     const [totalPrice, setTotalPrice] = useState(0)
 
@@ -42,12 +43,13 @@ export default function Checkbox() {
     });
 
     console.log(displayChbox)
-
+    console.log(formData)
     return (
         <div className="form--checkbox">
             <h3>¿Qué  quieres hacer?</h3>
             {displayChbox}
-            <h3>Preu: {totalPrice}</h3>
+            <Pannel/>
+            <h3>Preu: {totalPrice} €</h3>
         </div>
     )
 }

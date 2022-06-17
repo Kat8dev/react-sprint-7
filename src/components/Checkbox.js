@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
+import Pannel from "./Pannel";
 
 export default function Checkbox()  {
-    const [checkData, setCheckData] = useState({ web: false, seo: false, GAds: false})
+    const [checkData, setCheckData] = useState({ web: false, seo: false, GAds: false, paginas: 1, idiomas: 1})
     
     const [tPrice, setTPrice] = useState(0)
 
@@ -10,23 +11,27 @@ export default function Checkbox()  {
     });
 
     function handleChange(event) {
+        const {name, value, type, checked} = event.target
         setCheckData(prev => {
-            return {
-              ...prev,
-              [event.target.name]: event.target.checked
-            }  
-          })
+          return {
+            ...prev,
+            [name]: type === "checkbox" ? checked : value
+          }  
+        })
     }
 
     function getTotalPrice() {
-        let getTotal = 0 + (checkData.web && 500) + (checkData.seo && 300) + (checkData.GAds && 200);
+        let getTotal = 0 + 
+        (checkData.web && 500 + (checkData.paginas * 30) + (checkData.idiomas * 30)) + 
+        (checkData.seo && 300) + 
+        (checkData.GAds && 200);
         setTPrice(prev => prev = getTotal)
     }
 
     return (
-        <div>
+        <div className="main--div">
              <h3>¿Qué  quieres hacer?</h3>
-             <input
+             <input className="checkbox--inputs"
                 type = "checkbox"
                 name = "web"
                 id = "web"      
@@ -34,7 +39,12 @@ export default function Checkbox()  {
                 onChange = {handleChange}
              /> 
              <label htmlFor="web">Una pàgina web <span>(500 €)</span></label> <br/>
-              <input
+             {checkData.web && <Pannel 
+                 paginas={checkData.paginas}
+                 idiomas={checkData.idiomas}
+                 func={handleChange}
+             />}
+              <input className="checkbox--inputs"
                 type = "checkbox"
                 name = "seo"
                 id = "seo"
@@ -42,7 +52,7 @@ export default function Checkbox()  {
                 onChange = {handleChange}
              /> 
              <label htmlFor="seo">Una consultoria SEO <span>(300 €)</span></label> <br/>  
-              <input
+              <input className="checkbox--inputs"
                 type = "checkbox"
                 name = "GAds"
                 id = "GAds"

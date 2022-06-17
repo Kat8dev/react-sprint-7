@@ -12,10 +12,21 @@ code {
     monospace;
 }
 
-.form--checkbox {
-  max-width: 300px;
-  display: block;
-  
+.main--div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  letter-spacing: 1px;
+  min-height: 400px;
+}
+
+.checkbox--inputs {
+  margin: 10px;
+}
+
+label {
+  font-size: 15px;
 }
 
 span {

@@ -8,7 +8,19 @@ export const PannelDiv = styled.div`
 
 export const PannelInput = styled.input`
     width: 50px;
-    margin: 5px;
-    margin-right: 35px;
+    margin: 5px;   
 `
+
+export const PStyledButton = styled.button`
+    background-color: #e76f51; 
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 30px;
+    border-radius: 8px;
+    width: 35px;
+`
+
+
+   
 

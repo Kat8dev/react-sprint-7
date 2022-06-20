@@ -1,4 +1,4 @@
-import { PannelDiv, PannelInput } from "../styled";
+import { PannelDiv, PannelInput } from "../../../styled";
 import PannelButton from "./PannelButton";
 
 export default function Pannel(props) {

@@ -1,4 +1,4 @@
-import { PStyledButton } from "../styled";
+import { PStyledButton } from "../../../styled";
 
 export default function PannelButton(props) {
     return (

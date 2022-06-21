@@ -1,15 +1,14 @@
-import { useEffect } from "react";
+import { useEffect, useState} from "react";
 import Pannel from "./Pannel";
 import { useLocalStorage } from "../../../useLocalStorage";
 
 export default function Checkbox() {
   const [checkData, setCheckData] = useLocalStorage("myItem", [{ web: false, seo: false, GAds: false, paginas: 1, idiomas: 1 }])
-
   const [tPrice, setTPrice] = useLocalStorage("tPrice", 0)
 
   useEffect(() => {
     GetTotalPrice();
-  });
+  },[tPrice, setTPrice]);
 
   function HandleChange(event) {
     const { name, value, type, checked } = event.target
@@ -42,7 +41,7 @@ export default function Checkbox() {
   }
 
   return (
-    <div className="checkbox">
+    <>
       <h3>¿Qué  quieres hacer?</h3>
       <form action="#" onSubmit={sendData}>
         <input className="checkbox--inputs"
@@ -59,6 +58,8 @@ export default function Checkbox() {
           paginas={checkData.paginas}
           idiomas={checkData.idiomas}
           func={HandleChange}
+          infoTextPag={checkData.paginas}
+          infoTextIdims={checkData.idiomas}
         />}
         <input className="checkbox--inputs"
           type="checkbox"
@@ -78,6 +79,6 @@ export default function Checkbox() {
         <label htmlFor="GAds">Una campanya de Google Ads <span>(200 €)</span></label>
       </form>
       <h3>Precio: {tPrice} €</h3>
-    </div>
+    </>
   )
 } 

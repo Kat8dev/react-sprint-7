@@ -21,6 +21,16 @@ export const PStyledButton = styled.button`
     width: 35px;
 `
 
+export const InfoBtn = styled.button`
+  border: none;
+  color: white;
+  background-color: #aa998f;
+  padding: 2px 8px;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-left: 3px;
+`
+
 
    
 

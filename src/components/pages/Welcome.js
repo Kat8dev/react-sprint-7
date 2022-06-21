@@ -1,6 +1,6 @@
 export default function Welcome() {
   return (
-    <>
+    <div className="welcome--div">
       <h1>Bienvenidos</h1>
       <h2>Desarrollo y diseño de páginas web.</h2>
       <p>
@@ -9,6 +9,6 @@ export default function Welcome() {
         Empresas de primer nivel como Leche Pascual,
         Pastas Gallo o Yoigo, entre otros, ya han confiado en WebDev.
       </p>
-    </>
+    </div>
   )
 }

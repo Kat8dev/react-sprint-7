@@ -1,14 +1,9 @@
-import { useEffect, useState} from "react";
+import { useEffect } from "react";
 import Pannel from "./Pannel";
 import { useLocalStorage } from "../../../useLocalStorage";
 
 export default function Checkbox() {
   const [checkData, setCheckData] = useLocalStorage("myItem", [{ web: false, seo: false, GAds: false, paginas: 1, idiomas: 1 }])
-  const [tPrice, setTPrice] = useLocalStorage("tPrice", 0)
-
-  useEffect(() => {
-    GetTotalPrice();
-  },[tPrice, setTPrice]);
 
   function HandleChange(event) {
     const { name, value, type, checked } = event.target
@@ -20,17 +15,17 @@ export default function Checkbox() {
     })
   }
 
+  useEffect(()=>{
+    // local storage
+  },[checkData])
+
   function sendData(event) {
     event.preventDefault();
   }
 
-  function GetTotalPrice() {
-    let getTotal = 0 +
-      (checkData.web && 500 + (checkData.paginas * checkData.idiomas * 30)) +
-      (checkData.seo && 300) +
-      (checkData.GAds && 200);
-    setTPrice(prev => prev = getTotal)
-  }
+  let tPrice = (checkData.web && 500 + (checkData.paginas * checkData.idiomas * 30)) +
+    (checkData.seo && 300) +
+    (checkData.GAds && 200);
 
   function Increment() {
 

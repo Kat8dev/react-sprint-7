@@ -4,20 +4,20 @@ import { useState } from "react";
 import Info from "./Info";
 
 export default function Pannel(props) {
-    const [isOpen, setIsOpen] = useState({pags: false, idims: false});
+    const [isOpen, setIsOpen] = useState({ pags: false, idims: false });
 
     function HandleClick(id) {
-       if(id === 1) {
-        setIsOpen(prev => ({
-            ...prev,
-            pags: !isOpen.pags
-        }))
-       } else if(id === 2) {
-        setIsOpen(prev => ({
-            ...prev,
-            idims: !isOpen.idims
-        }))
-       }
+        if (id === 1) {
+            setIsOpen(prev => ({
+                ...prev,
+                pags: !isOpen.pags
+            }))
+        } else if (id === 2) {
+            setIsOpen(prev => ({
+                ...prev,
+                idims: !isOpen.idims
+            }))
+        }
     }
 
     return (
@@ -41,17 +41,17 @@ export default function Pannel(props) {
                 type="number"
                 id="2"
                 name="idiomas"
-                value={props.idiomas}      
+                value={props.idiomas}
                 onChange={props.func}
             />
             <PannelButton sign={"-"} setValue={props.minus} />
             <InfoBtn onClick={() => HandleClick(2)}>i</InfoBtn>
 
             <Info open={isOpen.pags} onClose={() => setIsOpen(false)}>
-                paginas Modal {props.infoTextPag}
+                Has escogido {props.infoTextPag} paginas
             </Info>
-              <Info open={isOpen.idims} onClose={() => setIsOpen(false)}>
-                idiomas Modal {props.infoTextIdims}
+            <Info open={isOpen.idims} onClose={() => setIsOpen(false)}>
+                has escogido {props.infoTextIdims} idiomas
             </Info>
         </PannelDiv>
     )

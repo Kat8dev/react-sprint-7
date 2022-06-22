@@ -1,9 +1,23 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Pannel from "./Pannel";
-import { useLocalStorage } from "../../../useLocalStorage";
 
 export default function Checkbox() {
-  const [checkData, setCheckData] = useLocalStorage("myItem", [{ web: false, seo: false, GAds: false, paginas: 1, idiomas: 1 }])
+  const [checkData, setCheckData] = useState(() => {
+    const initialValue = {
+      web: false, seo: false, GAds: false, paginas: 1, idiomas: 1, client: "", budget: ""
+    }
+
+    try {
+      const item = localStorage.getItem("checkdata");
+      return item ? JSON.parse(item) : initialValue;
+    } catch (error) {
+      return initialValue;
+    }
+  });
+
+  useEffect(() => {
+    localStorage.setItem("checkdata", JSON.stringify(checkData));
+  }, [checkData])
 
   function HandleChange(event) {
     const { name, value, type, checked } = event.target
@@ -15,13 +29,11 @@ export default function Checkbox() {
     })
   }
 
-  useEffect(()=>{
-    // local storage
-  },[checkData])
-
   function sendData(event) {
     event.preventDefault();
+    console.log("data is sending");
   }
+  
 
   let tPrice = (checkData.web && 500 + (checkData.paginas * checkData.idiomas * 30)) +
     (checkData.seo && 300) +
@@ -71,7 +83,24 @@ export default function Checkbox() {
           checked={checkData.GAds}
           onChange={HandleChange}
         />
-        <label htmlFor="GAds">Una campanya de Google Ads <span>(200 €)</span></label>
+        <label htmlFor="GAds">Una campanya de Google Ads <span>(200 €)</span></label> <br />
+        <input
+          className="checkbox--inputs"
+          type="text"
+          name="client"
+          value={checkData.client}
+          onChange={HandleChange}
+          placeholder="tu nombre"
+        /> <br />
+        <input
+          className="checkbox--inputs"
+          type="text"
+          name="budget"
+          value={checkData.budget}
+          onChange={HandleChange}
+          placeholder="nombre del presupuesto"
+        /> <br />
+        <input type="submit" value="Submit" />
       </form>
       <h3>Precio: {tPrice} €</h3>
     </>

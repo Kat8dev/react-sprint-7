@@ -1,6 +1,6 @@
 export default function Welcome() {
   return (
-    <div className="welcome--div">
+    <div className="container">
       <h1>Bienvenidos</h1>
       <h2>Desarrollo y diseño de páginas web.</h2>
       <p>

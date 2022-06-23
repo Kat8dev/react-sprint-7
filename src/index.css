@@ -2,9 +2,10 @@
   box-sizing: border-box;
 }
 
-body {
+body, html {
   margin: 0;
-  background-color: #e9c46a;
+  padding: 0;
+  background-color: #f1faee;
 }
 
 code {
@@ -53,9 +54,6 @@ span {
   font-size: 20px;
 }
 
-.welcome--div {
-  text-align: center;
-}
 
 .container {
   position: absolute;
@@ -64,4 +62,21 @@ span {
   transform: translate(-50%, -50%);
   letter-spacing: 1px;
   min-height: 400px;
+  text-align: center;
+}
+
+.CHECK_BOX_CONTAINER1 {
+  position: absolute;
+  top: 50%;
+  left: 25%;
+  transform: translate(-50%, -50%);
+  letter-spacing: 1px;
+  min-height: 400px;
+  box-shadow: 20px 20px 50px grey;
+  border-radius: 10px;
+  height: 700px; 
+}
+
+.CHECK_BOX_CONTAINER2 {
+  margin: 0 30px;
 }

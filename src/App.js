@@ -7,12 +7,10 @@ function App() {
   return (
     <>
       <Navbar />
-      <div className="container">
-        <Routes>
-          <Route path="/Welcome" element={<Welcome />} />
-          <Route path="/Checkbox" element={<Checkbox />} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/Welcome" element={<Welcome />} />
+        <Route path="/Checkbox" element={<Checkbox />} />
+      </Routes>
     </>
   );
 }

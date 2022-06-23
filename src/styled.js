@@ -32,11 +32,13 @@ export const InfoBtn = styled.button`
 `
 
 export const OVERLAY_STYLES = styled.div`
-    position: fixed;
-    top: -100%;
-    left: -180%;
-    right: -180%;
-    bottom: -100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    width: 100%;
+    height: 100vh;
     background-color: rgba(0, 0, 0, .7);  
 `
 export const MODAL_STYLES = styled.div`

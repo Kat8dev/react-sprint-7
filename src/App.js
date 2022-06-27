@@ -1,6 +1,6 @@
-import Checkbox from "./components/pages/checkbox/Checkbox";
-import Navbar from "./components/Navbar";
-import Welcome from "./components/pages/Welcome"
+import Checkbox from "./pages/Checkbox";
+import Navbar from "./pages/Navbar";
+import Welcome from "./pages/Welcome"
 import { Route, Routes } from "react-router-dom";
 
 function App() {

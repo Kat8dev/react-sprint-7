@@ -66,11 +66,7 @@ span {
 }
 
 .CHECK_BOX_CONTAINER1 {
-  position: absolute;
-  top: 50%;
-  left: 25%;
-  transform: translate(-50%, -50%);
-  letter-spacing: 1px;
+ letter-spacing: 1px;
   min-height: 400px;
   box-shadow: 20px 20px 50px grey;
   border-radius: 10px;
@@ -79,4 +75,34 @@ span {
 
 .CHECK_BOX_CONTAINER2 {
   margin: 0 30px;
+}
+
+.CHECKBOX-PAGE-CONTAINTER {
+  display: flex;
+  justify-content:space-around;
+  margin-top: 10rem;
+}
+
+.BUDGET_LIST_CONTAINER {
+  display: flex;
+  flex-flow: row wrap;
+  width: 600px;
+  max-width: 600px;
+  box-shadow: 20px 20px 50px grey;
+  justify-content:space-around;
+  border-radius: 10px;
+}
+
+.BUDGET_ITEM {
+  width: 100px;
+  border-radius: 10px;
+  box-shadow: 20px 20px 50px grey;
+  margin: 2px;
+  width: 250px;
+  height: 150px;
+}
+
+.BUDGET_SPANS {
+  font-size: 13px;
+  
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { MODAL_STYLES, OVERLAY_STYLES, BUTTON_STYLES } from '../../../styled'
+import { MODAL_STYLES, OVERLAY_STYLES, BUTTON_STYLES } from '../../styled'
 
 export default function Modal({ open, children, onClose }) {
   if (!open) return null

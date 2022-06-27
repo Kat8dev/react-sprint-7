@@ -1,4 +1,4 @@
-import { PannelDiv, PannelInput, InfoBtn } from "../../../styled";
+import { PannelDiv, PannelInput, InfoBtn } from "../../styled";
 import PannelButton from "./PannelButton";
 import { useState } from "react";
 import Modal from "./Info";

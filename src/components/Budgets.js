@@ -1,33 +1,40 @@
 import BudgetItem from "./BudgetItem"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 export default function Budgets({ budgetData }) {
-    const [actualState, setActualState] = useState([])
-    const [originalArray, setOriginalArray] = useState([])
+    const [actualState, setActualState] = useState([]);
 
-    const B_ARRAY = budgetData.map((item, index) => {
-        return <BudgetItem
-            clientName={item.clientName}
-            budgetName={item.budgetName}
-            totalPrice={item.totalPrice}
-            date={item.date}
-            key={index}
-        />
-    })
+    useEffect(() => {
+        setActualState([...budgetData])
+    }, [budgetData])
+
+
+
 
 
     function sortByAlphabet() {
-        const SORTED_LIST = budgetData.map(item => item).sort((a, b) => 
-           a.budgetName.toLowerCase() > b.budgetName.toLowerCase() ? 1 : -1).map((item, index) => {
-            return <BudgetItem
-                clientName={item.clientName}
-                budgetName={item.budgetName}
-                totalPrice={item.totalPrice}
-                date={item.date}
-                key={index}
-            />
-        })
-        setActualState(prev => prev = SORTED_LIST)
+
+        /* setActualState(prev => {
+             return prev.sort((a, b) =>
+                 a.budgetName.toLowerCase() > b.budgetName.toLowerCase() ? 1 : -1)
+         })*/
+
+        let newBudgetList = [...actualState]
+        newBudgetList.sort((a, b) => a.budgetName.toLowerCase() > b.budgetName.toLowerCase() ? 1 : -1)
+
+        setActualState(newBudgetList)
+
+        /* setActualState(prev => {
+            return prev.sort((a, b) => {
+                if (a.budgetName.toLowerCase() > b.budgetName.toLowerCase()) {
+                    return 1;
+                } else {
+                    return -1;
+                }
+            })
+        }) */
+
+
     }
 
     return (
@@ -35,7 +42,19 @@ export default function Budgets({ budgetData }) {
             <div style={{ width: "100%", height: "50px" }}>
                 <button style={{ height: "20px" }} onClick={sortByAlphabet}>ordena A-Z</button>
             </div>
-            {actualState}
+
+
+
+
+            {actualState.map((item, index) => {
+                return <BudgetItem
+                    clientName={item.clientName}
+                    budgetName={item.budgetName}
+                    totalPrice={item.totalPrice}
+                    date={item.date}
+                    key={index}
+                />
+            })}
         </div>
     )
 }

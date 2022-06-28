@@ -37,7 +37,7 @@ export default function Checkbox() {
 
     setBudgetData([
       ...budgetData,
-      { clientName: checkData.client, budgetName: checkData.budget, totalPrice: tPrice, date: new Date().toLocaleDateString() }
+      { clientName: checkData.client, budgetName: checkData.budget, totalPrice: tPrice, date: new Date().toUTCString() }
     ])
   }
  

@@ -115,13 +115,11 @@ span {
   background-color: #457b9d;
   border: none;
   color: white;
-  
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
   cursor: pointer;
-  float: left;
   height: 50px;
 }
 

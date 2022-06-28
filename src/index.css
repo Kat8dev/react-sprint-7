@@ -103,6 +103,28 @@ span {
 }
 
 .BUDGET_SPANS {
-  font-size: 13px;
+  font-size: 13px; 
+}
+
+.BUDGET_NAV {
+  height: 50px;
+  display: flex;
+}
+
+.BUDGET_NAV_BUTTONS {
+  background-color: #457b9d;
+  border: none;
+  color: white;
   
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  float: left;
+  height: 50px;
+}
+
+.BUDGET_NAV_BUTTONS:hover {
+  background-color: #1d3557;
 }

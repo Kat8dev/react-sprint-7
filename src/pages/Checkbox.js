@@ -39,7 +39,6 @@ export default function Checkbox() {
       ...budgetData,
       { clientName: checkData.client, budgetName: checkData.budget, totalPrice: tPrice, date: new Date().toUTCString() }
     ])
-    console.log(budgetData[0].date)
   }
  
   let tPrice = (checkData.web && 500 + (checkData.paginas * checkData.idiomas * 30)) +

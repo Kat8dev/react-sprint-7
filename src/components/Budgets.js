@@ -28,18 +28,30 @@ export default function Budgets({ budgetData }) {
     }
 
    function searchByBudgetName() {
+    if(searchInput === "") {
+        alert("Tienes que introducir el nombre del porsupuesto!")
+    }else if (searchInput !== "" && budgetData.find(item => item.budgetName === searchInput) === undefined){
+        alert("El nombre del porsupuesto no se coincide en tu lista de los porsupuestos!")
+    }
+    else {
         let newBudgetList = [...actualState];
         setActualState(prev => prev = newBudgetList.filter(item => item.budgetName === searchInput));
+    }
    }
 
     return (
         <div className="BUDGET_LIST_CONTAINER">
             <div className="BUDGET_NAV">
-                <button style={{ height: "20px" }} onClick={sortAZ}>Ordena A-Z</button>
-                <button style={{ height: "20px" }} onClick={sortByDate}>Ordena por data</button>
-                <button style={{ height: "20px" }} onClick={reIninitialize}>Reicializar orden</button>
-                <input value={searchInput} onChange={e => setSearchInput(e.target.value)} />
-                <button style={{ height: "20px" }} onClick={searchByBudgetName}>Buscar por porsupuesto</button>
+                <button className="BUDGET_NAV_BUTTONS" onClick={sortAZ}>Ordena A-Z</button>
+                <button className="BUDGET_NAV_BUTTONS" onClick={sortByDate}>Ordena por data</button>
+                <button className="BUDGET_NAV_BUTTONS" onClick={reIninitialize}>Reicializar orden</button>
+                <input
+                  className="BUDGET_INPUT"
+                  value={searchInput} 
+                  onChange={e => setSearchInput(e.target.value)} 
+                  placeholder="Buscar"
+                  />
+                <button className="BUDGET_NAV_BUTTONS" onClick={searchByBudgetName}>Buscar por porsupuesto</button>
             </div>
 
             {actualState.map((item, index) => {

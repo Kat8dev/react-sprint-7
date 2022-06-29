@@ -3,11 +3,17 @@ import Pannel from "../components/checkbox/Pannel";
 import Budgets from "../components/Budgets";
 
 export default function Checkbox() {
+
   const [checkData, setCheckData] = useState(() => {
     const initialValue = {
-      web: false, seo: false, GAds: false, paginas: 1, idiomas: 1, client: "", budget: ""
+      web: false, 
+      seo: false, 
+      GAds: false, 
+      paginas: 1, 
+      idiomas: 1, 
+      client: "", 
+      budget: ""
     }
-
     try {
       const item = localStorage.getItem("checkdata");
       return item ? JSON.parse(item) : initialValue;
@@ -41,33 +47,31 @@ export default function Checkbox() {
     })
   }
 
-  function sendData(event) {
+  function sendForm(event) {
     event.preventDefault();
 
     setBudgetData([
       ...budgetData,
-      { clientName: checkData.client, budgetName: checkData.budget, totalPrice: tPrice, date: new Date().toUTCString() }
+      { 
+        clientName: checkData.client,
+        budgetName: checkData.budget, 
+        totalPrice: tPrice, 
+        date: new Date().toUTCString()
+      }
     ])
   }
  
-  let tPrice = (checkData.web && 500 + (checkData.paginas * checkData.idiomas * 30)) +
+  let tPrice = (checkData.web && 500 +
+    (checkData.paginas * checkData.idiomas * 30)) +
     (checkData.seo && 300) +
     (checkData.GAds && 200);
-
-  function Increment() {
-
-  }
-
-  function Decrement() {
-    console.log("älgo")
-  }
 
   return (
     <div className="CHECKBOX-PAGE-CONTAINTER">
       <div className="CHECK_BOX_CONTAINER1">
         <div className="CHECK_BOX_CONTAINER2">
           <h3>¿Qué  quieres hacer?</h3>
-          <form action="#" onSubmit={sendData}>
+          <form action="#" onSubmit={sendForm}>
             <input className="checkbox--inputs"
               type="checkbox"
               name="web"
@@ -77,8 +81,6 @@ export default function Checkbox() {
             />
             <label htmlFor="web">Una pàgina web <span>(500 €)</span></label> <br />
             {checkData.web && <Pannel
-              plus={Increment}
-              minus={Decrement}
               paginas={checkData.paginas}
               idiomas={checkData.idiomas}
               func={HandleChange}

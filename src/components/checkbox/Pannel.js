@@ -1,5 +1,4 @@
 import { PannelDiv, PannelInput, InfoBtn } from "../../styled";
-import PannelButton from "./PannelButton";
 import { useState } from "react";
 import Modal from "./Info";
 
@@ -23,7 +22,6 @@ export default function Pannel(props) {
     return (
         <PannelDiv>
             <label htmlFor="1">Número de páginas</label>
-            <PannelButton sign={"+"} setValue={props.plus} />
             <PannelInput
                 type="number"
                 id="1"
@@ -31,12 +29,10 @@ export default function Pannel(props) {
                 value={props.paginas}
                 onChange={props.func}
             />
-            <PannelButton sign={"-"} setValue={props.minus} />
             <InfoBtn onClick={() => HandleClick(1)}>i</InfoBtn>
             <br />
 
-            <label htmlFor="2">Número de idiomas</label>
-            <PannelButton sign={"+"} setValue={props.plus} />
+            <label htmlFor="2">Número de idiomas</label>  
             <PannelInput
                 type="number"
                 id="2"
@@ -44,7 +40,6 @@ export default function Pannel(props) {
                 value={props.idiomas}
                 onChange={props.func}
             />
-            <PannelButton sign={"-"} setValue={props.minus} />
             <InfoBtn onClick={() => HandleClick(2)}>i</InfoBtn>
 
             <Modal open={isOpen.pags} onClose={() => setIsOpen(false)}>

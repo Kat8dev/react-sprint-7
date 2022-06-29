@@ -1,18 +1,13 @@
-import BudgetItem from "./BudgetItem"
-import { useState, useEffect } from "react"
+import BudgetItem from "./BudgetItem";
+import { useState, useEffect } from "react";
 
 export default function Budgets({ budgetData }) {
     const [actualState, setActualState] = useState([]);
-    const [searchInput, setSearchInput] = useState("")
-
+    const [searchInput, setSearchInput] = useState("");
 
     useEffect(() => {
-        localStorage.setItem('actualState', JSON.stringify(actualState));
-
-       
         setActualState([...budgetData])
     }, [budgetData])
-
 
     function sortAZ() {
         let newBudgetList = [...actualState];
@@ -35,12 +30,12 @@ export default function Budgets({ budgetData }) {
     function searchByBudgetName() {
         if (searchInput === "") {
             alert("Tienes que introducir el nombre del porsupuesto!")
-        } else if (searchInput !== "" && budgetData.find(item => item.budgetName === searchInput) === undefined) {
+        } else if (searchInput !== "" && budgetData.find(item => item.budgetName.toLowerCase() === searchInput.toLowerCase()) === undefined) {
             alert("El nombre del porsupuesto no se coincide en tu lista de los porsupuestos!")
         }
         else {
             let newBudgetList = [...actualState];
-            setActualState(prev => prev = newBudgetList.filter(item => item.budgetName === searchInput));
+            setActualState(prev => prev = newBudgetList.filter(item => item.budgetName.toLowerCase() === searchInput.toLowerCase()));
         }
     }
 

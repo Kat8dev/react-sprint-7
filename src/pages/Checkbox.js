@@ -16,11 +16,20 @@ export default function Checkbox() {
     }
   });
 
-  const [budgetData, setBudgetData] = useState([]);
+  const [budgetData, setBudgetData] = useState(()=> {
+    const initialValue = [];
+    try {
+      const item = localStorage.getItem("budgetData");
+      return item ? JSON.parse(item) : initialValue;
+    } catch (error) {
+      return initialValue;
+    }
+  });
 
   useEffect(() => {
     localStorage.setItem("checkdata", JSON.stringify(checkData));
-  }, [checkData])
+    localStorage.setItem("budgetData", JSON.stringify(budgetData))
+  }, [checkData, budgetData])
 
   function HandleChange(event) {
     const { name, value, type, checked } = event.target

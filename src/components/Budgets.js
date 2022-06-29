@@ -5,9 +5,14 @@ export default function Budgets({ budgetData }) {
     const [actualState, setActualState] = useState([]);
     const [searchInput, setSearchInput] = useState("")
 
+
     useEffect(() => {
+        localStorage.setItem('actualState', JSON.stringify(actualState));
+
+       
         setActualState([...budgetData])
     }, [budgetData])
+
 
     function sortAZ() {
         let newBudgetList = [...actualState];
@@ -27,17 +32,17 @@ export default function Budgets({ budgetData }) {
         setActualState(prev => prev = budgetData);
     }
 
-   function searchByBudgetName() {
-    if(searchInput === "") {
-        alert("Tienes que introducir el nombre del porsupuesto!")
-    }else if (searchInput !== "" && budgetData.find(item => item.budgetName === searchInput) === undefined){
-        alert("El nombre del porsupuesto no se coincide en tu lista de los porsupuestos!")
+    function searchByBudgetName() {
+        if (searchInput === "") {
+            alert("Tienes que introducir el nombre del porsupuesto!")
+        } else if (searchInput !== "" && budgetData.find(item => item.budgetName === searchInput) === undefined) {
+            alert("El nombre del porsupuesto no se coincide en tu lista de los porsupuestos!")
+        }
+        else {
+            let newBudgetList = [...actualState];
+            setActualState(prev => prev = newBudgetList.filter(item => item.budgetName === searchInput));
+        }
     }
-    else {
-        let newBudgetList = [...actualState];
-        setActualState(prev => prev = newBudgetList.filter(item => item.budgetName === searchInput));
-    }
-   }
 
     return (
         <div className="BUDGET_LIST_CONTAINER">
@@ -46,11 +51,11 @@ export default function Budgets({ budgetData }) {
                 <button className="BUDGET_NAV_BUTTONS" onClick={sortByDate}>Ordena por data</button>
                 <button className="BUDGET_NAV_BUTTONS" onClick={reIninitialize}>Reicializar orden</button>
                 <input
-                  className="BUDGET_INPUT"
-                  value={searchInput} 
-                  onChange={e => setSearchInput(e.target.value)} 
-                  placeholder="Buscar"
-                  />
+                    className="BUDGET_INPUT"
+                    value={searchInput}
+                    onChange={e => setSearchInput(e.target.value)}
+                    placeholder="Buscar"
+                />
                 <button className="BUDGET_NAV_BUTTONS" onClick={searchByBudgetName}>Buscar por porsupuesto</button>
             </div>
 

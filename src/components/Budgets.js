@@ -29,9 +29,9 @@ export default function Budgets({ budgetData }) {
 
     function searchByBudgetName() {
         if (searchInput === "") {
-            alert("Tienes que introducir el nombre del porsupuesto!")
+            alert("Tienes que introducir el nombre del presupuesto!")
         } else if (searchInput !== "" && budgetData.find(item => item.budgetName.toLowerCase() === searchInput.toLowerCase()) === undefined) {
-            alert("El nombre del porsupuesto no se coincide en tu lista de los porsupuestos!")
+            alert("El nombre del porsupuesto no coincide en tu lista de los presupuestos!")
         }
         else {
             let newBudgetList = [...actualState];
